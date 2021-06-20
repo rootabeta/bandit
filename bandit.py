@@ -12,6 +12,8 @@ def upload():
     for fname in request.form:
         try:
             content = request.form[fname]
+            if "/" in fname:
+                fname = fname.split("/")[-1] #no path traversal for youuuu
             contentd = base64.b64decode(content)
             assert(not path.exists(fname))
             with open(fname,"wb") as f:
